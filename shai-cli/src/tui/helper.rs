@@ -1,0 +1,32 @@
+use ansi_to_tui::IntoText;
+use ratatui::{layout::Rect, style::{Color, Style, Stylize}, symbols::border, text::{Line, Span}, widgets::{Block, Borders, Padding, Widget}, Frame};
+
+
+
+pub struct HelpArea;
+
+impl HelpArea {
+    fn helper_msg(&self) -> String {
+        [
+            "  ? to print help      tap esc twice to clear input",
+            "  / for commands       tap esc while agent is running to cancel",
+            "                       ctrl^c to exit"
+        ].join("\n").to_string()
+    }
+}
+
+impl HelpArea {
+    pub fn height(&self) -> u16 {
+        2 // content
+    }
+
+    pub fn draw(&self, f: &mut Frame, area: Rect) {
+        let helper_text = self.helper_msg();
+        let x = helper_text.into_text().unwrap();
+        let x = x.style(Style::default().fg(Color::DarkGray).dim());
+        f.render_widget(
+            x, 
+            area
+        );
+    }
+}
