@@ -242,7 +242,7 @@ impl App<'_> {
     }
 
     async fn handle_key_event(&mut self, key_event: KeyEvent) -> io::Result<()> {
-        if matches!(key_event.code, KeyCode::Char('c')) && key_event.modifiers.contains(crossterm::event::KeyModifiers::CONTROL) {
+        if (matches!(key_event.code, KeyCode::Char('c')) && key_event.modifiers.contains(crossterm::event::KeyModifiers::CONTROL)) || (matches!(key_event.code, KeyCode::Char('d')) && key_event.modifiers.contains(crossterm::event::KeyModifiers::CONTROL)) {
             self.exit = true;
             return Ok(());
         }
