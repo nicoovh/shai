@@ -99,10 +99,10 @@ impl LlmProvider for OvhCloudProvider {
     fn info() -> ProviderInfo {
         ProviderInfo {
             name: "ovhcloud",
-            display_name: "OVH Cloud AI Endpoints",
+            display_name: "OVHcloud AI Endpoints",
             env_vars: vec![
-                EnvVar::required("OVH_API_KEY", "OVH Cloud API key"),
-                EnvVar::optional("OVH_BASE_URL", "OVH Cloud base URL (defaults to standard endpoint)"),
+                EnvVar::required("OVH_API_KEY", "OVHcloud API key"),
+                EnvVar::optional("OVH_BASE_URL", "OVHcloud base URL (defaults to standard endpoint)"),
             ],
         }
     }
